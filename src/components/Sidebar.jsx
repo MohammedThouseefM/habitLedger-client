@@ -24,7 +24,7 @@ const Sidebar = () => {
             {/* Logo Area */}
             {/* Logo Area */}
             <div className="p-6 flex items-center justify-center">
-                <img src="/logo.png" alt="Habits Ledger" className="h-16 w-auto object-contain" />
+                <img src="/logo.png" alt="Habits Ledger" className="h-16 w-auto object-contain rounded-2xl" />
             </div>
 
             {/* Navigation */}
