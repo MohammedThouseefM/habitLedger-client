@@ -11,69 +11,72 @@ import Events from './pages/Events';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import NotFound from './pages/NotFound';
+import ServerWarmup from './components/ServerWarmup';
 
 
 function App() {
     return (
-        <Router>
-            <AuthProvider>
-                <SyncProvider>
-                    <Routes>
-                        {/* Public Routes - No Layout */}
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/auth/callback" element={<AuthCallback />} />
+        <ServerWarmup>
+            <Router>
+                <AuthProvider>
+                    <SyncProvider>
+                        <Routes>
+                            {/* Public Routes - No Layout */}
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/auth/callback" element={<AuthCallback />} />
 
-                        {/* Protected Routes - With Layout */}
-                        <Route
-                            path="/dashboard"
-                            element={
-                                <ProtectedRoute>
-                                    <Layout>
-                                        <Dashboard />
-                                    </Layout>
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="/time-tracking"
-                            element={
-                                <ProtectedRoute>
-                                    <Layout>
-                                        <TimeTracking />
-                                    </Layout>
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="/notes"
-                            element={
-                                <ProtectedRoute>
-                                    <Layout>
-                                        <Notes />
-                                    </Layout>
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="/events"
-                            element={
-                                <ProtectedRoute>
-                                    <Layout>
-                                        <Events />
-                                    </Layout>
-                                </ProtectedRoute>
-                            }
-                        />
+                            {/* Protected Routes - With Layout */}
+                            <Route
+                                path="/dashboard"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <Dashboard />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/time-tracking"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <TimeTracking />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/notes"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <Notes />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/events"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <Events />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
 
-                        {/* Redirect root to dashboard */}
-                        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                            {/* Redirect root to dashboard */}
+                            <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-                        {/* 404 Catch-all */}
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </SyncProvider>
-            </AuthProvider>
-        </Router>
+                            {/* 404 Catch-all */}
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </SyncProvider>
+                </AuthProvider>
+            </Router>
+        </ServerWarmup>
     );
 }
 
