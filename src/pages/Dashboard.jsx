@@ -12,6 +12,7 @@ import PerformanceMetrics from '../components/PerformanceMetrics';
 import SyncStatusIndicator from '../components/SyncStatusIndicator';
 import CounterView from '../components/counter/CounterView';
 import ReminderManager from '../components/ReminderManager';
+import NotificationCenter from '../components/NotificationCenter';
 import HabitModal from '../components/HabitModal'; // New Modal
 
 const Dashboard = () => {
@@ -244,6 +245,8 @@ const Dashboard = () => {
                             compact={false}
                         />
                     </div>
+
+                    <NotificationCenter habits={habits} logsMap={logsMap} />
 
                     <button
                         onClick={openCreateModal}
