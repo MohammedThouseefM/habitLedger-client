@@ -9,6 +9,7 @@ import TimeTracking from './pages/TimeTracking';
 import Notes from './pages/Notes';
 import Events from './pages/Events';
 import Layout from './components/Layout';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 function App() {
@@ -16,18 +17,56 @@ function App() {
         <Router>
             <AuthProvider>
                 <SyncProvider>
-                    <Layout>
-                        <Routes>
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/auth/callback" element={<AuthCallback />} />
-                            <Route path="/dashboard" element={<Dashboard />} />
-                            <Route path="/time-tracking" element={<TimeTracking />} />
-                            <Route path="/notes" element={<Notes />} />
-                            <Route path="/events" element={<Events />} />
+                    <Routes>
+                        {/* Public Routes - No Layout */}
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/auth/callback" element={<AuthCallback />} />
 
-                            <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                        </Routes>
-                    </Layout>
+                        {/* Protected Routes - With Layout */}
+                        <Route
+                            path="/dashboard"
+                            element={
+                                <ProtectedRoute>
+                                    <Layout>
+                                        <Dashboard />
+                                    </Layout>
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="/time-tracking"
+                            element={
+                                <ProtectedRoute>
+                                    <Layout>
+                                        <TimeTracking />
+                                    </Layout>
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="/notes"
+                            element={
+                                <ProtectedRoute>
+                                    <Layout>
+                                        <Notes />
+                                    </Layout>
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="/events"
+                            element={
+                                <ProtectedRoute>
+                                    <Layout>
+                                        <Events />
+                                    </Layout>
+                                </ProtectedRoute>
+                            }
+                        />
+
+                        {/* Redirect root to dashboard */}
+                        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                    </Routes>
                 </SyncProvider>
             </AuthProvider>
         </Router>
