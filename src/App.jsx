@@ -10,6 +10,7 @@ import Notes from './pages/Notes';
 import Events from './pages/Events';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
+import NotFound from './pages/NotFound';
 
 
 function App() {
@@ -66,6 +67,9 @@ function App() {
 
                         {/* Redirect root to dashboard */}
                         <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+                        {/* 404 Catch-all */}
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </SyncProvider>
             </AuthProvider>
