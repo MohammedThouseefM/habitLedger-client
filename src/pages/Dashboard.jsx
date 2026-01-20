@@ -13,6 +13,7 @@ import SyncStatusIndicator from '../components/SyncStatusIndicator';
 import CounterView from '../components/counter/CounterView';
 import ReminderManager from '../components/ReminderManager';
 import NotificationCenter from '../components/NotificationCenter';
+import LoadingScreen from '../components/LoadingScreen';
 import HabitModal from '../components/HabitModal'; // New Modal
 
 const Dashboard = () => {
@@ -210,14 +211,7 @@ const Dashboard = () => {
     };
 
     if (loading) {
-        return (
-            <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-                <div className="text-center">
-                    <div className="spinner mx-auto mb-4 border-primary-500 border-t-transparent"></div>
-                    <p className="text-slate-500">Loading your habits...</p>
-                </div>
-            </div>
-        );
+        return <LoadingScreen message="Loading your habits..." />;
     }
 
     return (
