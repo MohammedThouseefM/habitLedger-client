@@ -22,11 +22,9 @@ const Sidebar = () => {
     return (
         <aside className="hidden lg:flex flex-col w-64 h-screen bg-slate-900 border-r border-slate-800 text-slate-300 fixed left-0 top-0 z-50">
             {/* Logo Area */}
-            <div className="p-6 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 shadow-lg shadow-primary-500/20 flex items-center justify-center text-white font-bold text-lg">
-                    H
-                </div>
-                <h1 className="text-xl font-bold text-white tracking-tight">HabitFlow</h1>
+            {/* Logo Area */}
+            <div className="p-6 flex items-center justify-center">
+                <img src="/logo.png" alt="Habits Ledger" className="h-16 w-auto object-contain" />
             </div>
 
             {/* Navigation */}
