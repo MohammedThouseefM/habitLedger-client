@@ -25,22 +25,22 @@ const MonthSelector = ({ year, month, onPrevious, onNext, compact = false }) => 
         <div className="flex items-center gap-4">
             <button
                 onClick={onPrevious}
-                className="p-1.5 hover:bg-slate-700/50 rounded-lg transition-colors text-slate-400 hover:text-primary-400"
+                className="p-1.5 hover:bg-surface-light rounded-lg transition-colors text-text-secondary hover:text-primary"
                 aria-label="Previous month"
             >
                 <ChevronLeft className="w-5 h-5" />
             </button>
 
             <div className="text-center min-w-[120px]">
-                <h2 className="text-xl font-bold text-white tracking-wide">
+                <h2 className="text-xl font-bold text-text tracking-wide">
                     {monthName}
                 </h2>
-                <p className="text-slate-500 text-xs font-medium uppercase tracking-wider">{year}</p>
+                <p className="text-text-secondary text-xs font-medium uppercase tracking-wider">{year}</p>
             </div>
 
             <button
                 onClick={onNext}
-                className="p-1.5 hover:bg-slate-700/50 rounded-lg transition-colors text-slate-400 hover:text-primary-400"
+                className="p-1.5 hover:bg-surface-light rounded-lg transition-colors text-text-secondary hover:text-primary"
                 aria-label="Next month"
             >
                 <ChevronRight className="w-5 h-5" />

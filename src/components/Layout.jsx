@@ -4,7 +4,7 @@ import BottomNav from './BottomNav';
 
 const Layout = ({ children }) => {
     return (
-        <div className="flex min-h-screen bg-slate-950 text-slate-100">
+        <div className="flex min-h-screen bg-bg text-text">
             {/* Desktop Sidebar */}
             <Sidebar />
 

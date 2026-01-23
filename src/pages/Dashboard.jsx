@@ -219,10 +219,10 @@ const Dashboard = () => {
             {/* Dashboard Header */}
             <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-white tracking-tight leading-tight">
+                    <h1 className="text-3xl font-bold text-text tracking-tight leading-tight">
                         Good {new Date().getHours() < 12 ? 'Morning' : new Date().getHours() < 18 ? 'Afternoon' : 'Evening'}, {user?.name?.split(' ')[0] || 'User'}
                     </h1>
-                    <p className="text-slate-400 mt-1">Ready to crush your goals today?</p>
+                    <p className="text-text-secondary mt-1">Ready to crush your goals today?</p>
                 </div>
 
                 <div className="flex items-center gap-4 flex-wrap">
@@ -230,7 +230,7 @@ const Dashboard = () => {
                         <SyncStatusIndicator />
                     </div>
 
-                    <div className="bg-slate-900/50 p-1 rounded-xl border border-slate-800 flex items-center">
+                    <div className="glass-panel p-1 rounded-xl flex items-center">
                         <MonthSelector
                             year={year}
                             month={month}

@@ -97,32 +97,32 @@ const PerformanceMetrics = ({ habits, logsMap, year, month }) => {
         <div className="space-y-3 sm:space-y-4">
             {/* Overall Stats */}
             <div className="glass-panel p-3 sm:p-4 rounded-2xl">
-                <h3 className="text-base sm:text-lg font-semibold text-slate-200 mb-3 sm:mb-4">Performance</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-text mb-3 sm:mb-4">Performance</h3>
 
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                     {/* Completion Rate */}
-                    <div className="bg-slate-800/50 rounded-xl p-3 flex flex-col items-center justify-center text-center border border-slate-700/50">
-                        <div className="w-8 h-8 rounded-full bg-slate-700/50 flex items-center justify-center mb-2 shadow-sm">
-                            <Target className="w-4 h-4 text-primary-400" />
+                    <div className="bg-surface-light rounded-xl p-3 flex flex-col items-center justify-center text-center border border-border">
+                        <div className="w-8 h-8 rounded-full bg-white/50 flex items-center justify-center mb-2 shadow-sm border border-border">
+                            <Target className="w-4 h-4 text-primary" />
                         </div>
-                        <p className="text-xl font-bold text-white mb-0.5">{overallCompletion}%</p>
-                        <p className="text-xs text-slate-400">Completion</p>
+                        <p className="text-xl font-bold text-text mb-0.5">{overallCompletion}%</p>
+                        <p className="text-xs text-text-secondary">Completion</p>
                     </div>
 
                     {/* Active Streaks */}
-                    <div className="bg-orange-900/10 rounded-xl p-3 flex flex-col items-center justify-center text-center border border-orange-500/20">
-                        <div className="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center mb-2 shadow-sm">
-                            <Flame className="w-4 h-4 text-orange-400" />
+                    <div className="bg-orange-50 rounded-xl p-3 flex flex-col items-center justify-center text-center border border-orange-200">
+                        <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mb-2 shadow-sm">
+                            <Flame className="w-4 h-4 text-orange-500" />
                         </div>
-                        <p className="text-xl font-bold text-white mb-0.5">{activeStreaks}</p>
-                        <p className="text-xs text-slate-400">Active Streaks</p>
+                        <p className="text-xl font-bold text-text mb-0.5">{activeStreaks}</p>
+                        <p className="text-xs text-text-secondary">Active Streaks</p>
                     </div>
                 </div>
             </div>
 
             {/* Per-Habit Stats */}
             <div className="glass-panel p-3 sm:p-4 rounded-2xl">
-                <h3 className="text-base sm:text-lg font-semibold text-slate-200 mb-3 sm:mb-4">Habit Streaks</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-text mb-3 sm:mb-4">Habit Streaks</h3>
 
                 <div className="space-y-4">
                     {habitStats.map(habit => (
@@ -136,10 +136,10 @@ const PerformanceMetrics = ({ habits, logsMap, year, month }) => {
 
                             <div className="flex-1 min-w-0">
                                 <div className="flex justify-between items-center mb-1">
-                                    <h4 className="text-sm font-semibold text-slate-200 truncate">{habit.name}</h4>
-                                    <span className="text-xs font-medium text-slate-400">{habit.completionRate}%</span>
+                                    <h4 className="text-sm font-semibold text-text truncate">{habit.name}</h4>
+                                    <span className="text-xs font-medium text-text-secondary">{habit.completionRate}%</span>
                                 </div>
-                                <div className="w-full bg-slate-700/50 rounded-full h-1.5 mb-2">
+                                <div className="w-full bg-surface-light rounded-full h-1.5 mb-2">
                                     <div
                                         className="h-1.5 rounded-full transition-all duration-300"
                                         style={{
@@ -153,8 +153,8 @@ const PerformanceMetrics = ({ habits, logsMap, year, month }) => {
                                 {/* Smart Streak Badges */}
                                 <div className="flex gap-2">
                                     <span className={`inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-md font-medium border ${habit.currentStreak > 0
-                                        ? 'bg-orange-500/10 text-orange-400 border-orange-500/20'
-                                        : 'bg-slate-800 text-slate-500 border-slate-700'
+                                        ? 'bg-orange-50 text-orange-600 border-orange-200'
+                                        : 'bg-slate-100 text-slate-500 border-slate-200'
                                         }`}>
                                         <Flame className="w-3 h-3" />
                                         {habit.currentStreak} day streak

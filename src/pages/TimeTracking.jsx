@@ -162,19 +162,19 @@ const TimeTracking = () => {
                     <div>
                         <button
                             onClick={() => navigate('/dashboard')}
-                            className="flex items-center text-slate-400 hover:text-white transition-colors mb-2 text-sm font-medium"
+                            className="flex items-center text-text-secondary hover:text-text transition-colors mb-2 text-sm font-medium"
                         >
                             <ArrowLeft className="w-4 h-4 mr-1" />
                             Dashboard
                         </button>
-                        <h1 className="text-2xl font-bold text-white">Time Tracking</h1>
-                        <p className="text-slate-400 text-sm">Manage your daily schedule and productivity</p>
+                        <h1 className="text-2xl font-bold text-text">Time Tracking</h1>
+                        <p className="text-text-secondary text-sm">Manage your daily schedule and productivity</p>
                     </div>
 
-                    <div className="flex items-center bg-slate-800/50 rounded-xl shadow-sm border border-slate-700/50 p-1 backdrop-blur-sm">
+                    <div className="flex items-center bg-surface-light rounded-xl shadow-sm border border-border p-1 backdrop-blur-sm">
                         <button
                             onClick={() => handleDateChange(-1)}
-                            className="p-2 hover:bg-slate-700 rounded-lg text-slate-400 hover:text-white transition-colors"
+                            className="p-2 hover:bg-surface rounded-lg text-text-secondary hover:text-text transition-colors"
                         >
                             <ChevronLeft className="w-5 h-5" />
                         </button>
@@ -184,12 +184,12 @@ const TimeTracking = () => {
                                 type="date"
                                 value={selectedDate}
                                 onChange={(e) => setSelectedDate(e.target.value)}
-                                className="bg-transparent text-sm font-medium text-slate-200 focus:outline-none cursor-pointer [color-scheme:dark]"
+                                className="bg-transparent text-sm font-medium text-text focus:outline-none cursor-pointer [color-scheme:light]"
                             />
                         </div>
                         <button
                             onClick={() => handleDateChange(1)}
-                            className="p-2 hover:bg-slate-700 rounded-lg text-slate-400 hover:text-white transition-colors"
+                            className="p-2 hover:bg-surface rounded-lg text-text-secondary hover:text-text transition-colors"
                         >
                             <ChevronRight className="w-5 h-5" />
                         </button>
@@ -236,18 +236,18 @@ const TimeTracking = () => {
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
                     <div className="bg-slate-900/95 rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-200 border border-slate-700/50">
                         {/* Modal Header */}
-                        <div className="px-6 py-4 border-b border-slate-800 flex justify-between items-center bg-slate-900">
+                        <div className="px-6 py-4 border-b border-border flex justify-between items-center bg-surface">
                             <div>
-                                <h2 className="text-lg font-bold text-white">
+                                <h2 className="text-lg font-bold text-text">
                                     {editingId ? 'Edit Activity' : 'New Activity'}
                                 </h2>
-                                <p className="text-xs text-slate-400 mt-0.5">
+                                <p className="text-xs text-text-secondary mt-0.5">
                                     {new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
                                 </p>
                             </div>
                             <button
                                 onClick={() => setShowForm(false)}
-                                className="text-slate-400 hover:text-white w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-800 transition-all"
+                                className="text-text-secondary hover:text-text w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-light transition-all"
                             >
                                 <X className="w-5 h-5" />
                             </button>

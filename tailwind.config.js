@@ -7,7 +7,27 @@ export default {
     theme: {
         extend: {
             colors: {
+                // Map to CSS variables for theming
+                bg: 'var(--color-bg)',
+                surface: {
+                    DEFAULT: 'var(--color-surface)',
+                    light: 'var(--color-surface-light)',
+                },
+                text: {
+                    DEFAULT: 'var(--color-text)',
+                    secondary: 'var(--color-text-secondary)',
+                },
+                border: 'var(--color-border)',
+
+                // Keep the palette but map main tokens to vars if needed, 
+                // or just rely on the palette for specific shades.
+                // Overriding primary/accent to use CSS vars for main usage
                 primary: {
+                    DEFAULT: 'var(--color-primary)',
+                    dark: 'var(--color-primary-dark)',
+                    light: 'var(--color-primary-light)',
+                    // Keeping shades for fallback or specific UI elements if needed, 
+                    // but usually best to stick to vars for theming.
                     50: '#f0fdfa',
                     100: '#ccfbf1',
                     200: '#99f6e4',
@@ -20,6 +40,8 @@ export default {
                     900: '#134e4a',
                 },
                 accent: {
+                    DEFAULT: 'var(--color-accent)',
+                    dark: 'var(--color-accent-dark)',
                     50: '#fff7ed',
                     100: '#ffedd5',
                     200: '#fed7aa',

@@ -52,12 +52,12 @@ const HabitGrid = ({ year, month, habits, logsMap, onToggle, onHabitClick, onEdi
     };
 
     return (
-        <div className="glass-panel rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl bg-slate-900/50 flex-1 flex flex-col min-h-0">
+        <div className="glass-panel rounded-2xl overflow-hidden border border-border shadow-xl bg-surface/50 flex-1 flex flex-col min-h-0">
             <div className="flex flex-1 min-h-0">
                 {/* Fixed Left Column - Habit Names */}
-                <div className="flex-shrink-0 border-r border-slate-700/50 bg-slate-900/95 backdrop-blur-md z-10 w-[200px] lg:w-[240px]">
+                <div className="flex-shrink-0 border-r border-border bg-surface/95 backdrop-blur-md z-10 w-[200px] lg:w-[240px]">
                     {/* Header */}
-                    <div className="font-bold text-slate-500 uppercase tracking-wider px-4 text-xs h-[72px] flex items-end pb-3 border-b border-slate-700/50 bg-slate-900">
+                    <div className="font-bold text-text-secondary uppercase tracking-wider px-4 text-xs h-[72px] flex items-end pb-3 border-b border-border bg-surface/95">
                         Habit
                     </div>
 
@@ -66,7 +66,7 @@ const HabitGrid = ({ year, month, habits, logsMap, onToggle, onHabitClick, onEdi
                         {habits.map((habit) => (
                             <div
                                 key={habit.id}
-                                className="group flex items-center justify-between px-4 h-[44px] hover:bg-slate-800/50 transition-colors relative cursor-pointer"
+                                className="group flex items-center justify-between px-4 h-[44px] hover:bg-surface-light transition-colors relative cursor-pointer"
                                 onClick={() => onHabitClick(habit)}
                             >
                                 <div className="flex items-center gap-3 overflow-hidden">
@@ -78,7 +78,7 @@ const HabitGrid = ({ year, month, habits, logsMap, onToggle, onHabitClick, onEdi
                                         }}
                                     />
                                     <div className="flex flex-col overflow-hidden">
-                                        <span className="text-sm font-medium text-slate-300 truncate group-hover:text-white transition-colors" title={habit.name}>
+                                        <span className="text-sm font-medium text-text-secondary truncate group-hover:text-primary transition-colors" title={habit.name}>
                                             {habit.name}
                                         </span>
                                     </div>
@@ -107,17 +107,17 @@ const HabitGrid = ({ year, month, habits, logsMap, onToggle, onHabitClick, onEdi
                     </div>
 
                     {habits.length === 0 && (
-                        <div className="px-4 py-8 text-slate-500 text-sm italic">
+                        <div className="px-4 py-8 text-text-secondary text-sm italic">
                             No habits yet. Click "New Habit" to start!
                         </div>
                     )}
                 </div>
 
                 {/* Scrollable Right Section - Dates and Checkboxes */}
-                <div className="flex-1 overflow-auto custom-scrollbar bg-slate-900/20" ref={scrollContainerRef}>
+                <div className="flex-1 overflow-auto custom-scrollbar bg-surface/20" ref={scrollContainerRef}>
                     <div className="min-w-max">
                         {/* Header Row - Days */}
-                        <div className="flex gap-2 border-b border-slate-700/50 pb-3 h-[72px] items-end px-4 sticky top-0 bg-slate-900/95 z-10 backdrop-blur-sm">
+                        <div className="flex gap-2 border-b border-border pb-3 h-[72px] items-end px-4 sticky top-0 bg-surface/95 z-10 backdrop-blur-sm">
                             {days.map((day) => {
                                 const dateStr = formatDateForAPI(day);
                                 const isToday = dateStr === currentDate;
@@ -130,11 +130,11 @@ const HabitGrid = ({ year, month, habits, logsMap, onToggle, onHabitClick, onEdi
                                             }`}
                                         style={{ width: '40px', padding: '6px 0' }}
                                     >
-                                        <div className={`text-[10px] font-bold uppercase mb-0.5 ${isToday ? 'text-primary-400' : 'text-slate-500'
+                                        <div className={`text-[10px] font-bold uppercase mb-0.5 ${isToday ? 'text-primary' : 'text-text-secondary'
                                             }`}>
                                             {getDayName(day)}
                                         </div>
-                                        <div className={`text-sm font-bold ${isToday ? 'text-white' : 'text-slate-400'
+                                        <div className={`text-sm font-bold ${isToday ? 'text-primary-dark' : 'text-text-secondary'
                                             }`}>
                                             {getDayNumber(day)}
                                         </div>
@@ -148,7 +148,7 @@ const HabitGrid = ({ year, month, habits, logsMap, onToggle, onHabitClick, onEdi
                             {habits.map((habit) => (
                                 <div
                                     key={habit.id}
-                                    className="flex gap-2 h-[44px] items-center hover:bg-slate-800/20 transition-colors rounded-lg"
+                                    className="flex gap-2 h-[44px] items-center hover:bg-surface-light/50 transition-colors rounded-lg"
                                 >
                                     {days.map((day) => {
                                         const dateStr = formatDateForAPI(day);

@@ -39,17 +39,17 @@ const BottomNav = () => {
     if (location.pathname === '/login' || location.pathname === '/auth/callback') return null;
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-lg border-t border-slate-800 px-4 py-2 lg:hidden z-50 safe-area-bottom shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.2)]">
+        <div className="fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-lg border-t border-border px-4 py-2 lg:hidden z-50 safe-area-bottom shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
             <div className="flex items-center justify-between max-w-md mx-auto">
                 {navItems.map((item) => (
                     <button
                         key={item.id}
                         onClick={() => handleNavigation(item)}
                         className={`flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-200 ${item.id === 'add'
-                            ? '-mt-8 bg-primary-600 text-white shadow-lg shadow-primary-500/30 w-12 h-12 rounded-full transform active:scale-95 border-2 border-slate-900'
+                            ? '-mt-8 bg-primary text-white shadow-lg shadow-primary/30 w-12 h-12 rounded-full transform active:scale-95 border-2 border-bg'
                             : isActive(item)
-                                ? 'text-primary-400'
-                                : 'text-slate-500 hover:text-slate-300'
+                                ? 'text-primary'
+                                : 'text-text-secondary hover:text-text'
                             }`}
                     >
                         <item.icon className={item.id === 'add' ? 'w-6 h-6' : 'w-5 h-5'} />

@@ -124,25 +124,25 @@ const Notes = () => {
     );
 
     return (
-        <div className="flex h-screen bg-slate-950 overflow-hidden">
+        <div className="flex h-screen bg-bg overflow-hidden">
             {/* Sidebar List */}
-            <div className={`${selectedNote ? 'hidden md:flex' : 'flex'} w-full md:w-80 flex-col border-r border-slate-800 bg-slate-900`}>
+            <div className={`${selectedNote ? 'hidden md:flex' : 'flex'} w-full md:w-80 flex-col border-r border-border bg-surface`}>
                 {/* Header */}
-                <div className="p-4 border-b border-slate-800 bg-slate-900/50 backdrop-blur-sm">
+                <div className="p-4 border-b border-border bg-surface/50 backdrop-blur-sm">
                     <div className="flex items-center justify-between mb-4">
-                        <button onClick={() => navigate('/dashboard')} className="flex items-center text-sm text-slate-400 hover:text-white transition-colors">
+                        <button onClick={() => navigate('/dashboard')} className="flex items-center text-sm text-text-secondary hover:text-text transition-colors">
                             <ChevronLeft size={16} /> Back
                         </button>
-                        <h2 className="font-bold text-white">Notes</h2>
+                        <h2 className="font-bold text-text">Notes</h2>
                     </div>
                     <div className="relative">
-                        <Search className="absolute left-3 top-2.5 text-slate-500 w-4 h-4" />
+                        <Search className="absolute left-3 top-2.5 text-text-secondary w-4 h-4" />
                         <input
                             type="text"
                             placeholder="Search notes..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-9 pr-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500/50 transition-all placeholder:text-slate-500"
+                            className="w-full pl-9 pr-4 py-2 bg-surface-light border border-border rounded-lg text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-text-secondary"
                         />
                     </div>
                 </div>
@@ -151,7 +151,7 @@ const Notes = () => {
                 <div className="flex-1 overflow-y-auto p-2 space-y-2 custom-scrollbar">
                     <button
                         onClick={handleCreateNote}
-                        className="w-full py-3 border-2 border-dashed border-slate-700 rounded-xl text-slate-500 hover:border-primary-500 hover:text-primary-400 hover:bg-primary-500/10 transition-all flex items-center justify-center gap-2 font-medium text-sm mb-2"
+                        className="w-full py-3 border-2 border-dashed border-border rounded-xl text-text-secondary hover:border-primary hover:text-primary hover:bg-primary/10 transition-all flex items-center justify-center gap-2 font-medium text-sm mb-2"
                     >
                         <Plus size={16} /> New Note
                     </button>
@@ -165,18 +165,18 @@ const Notes = () => {
                             <div
                                 key={note.id}
                                 onClick={() => selectNote(note)}
-                                className={`group p-4 rounded-xl cursor-pointer border transition-all hover:bg-slate-800/80 text-left relative ${selectedNote?.id === note.id
-                                    ? 'bg-slate-800 border-primary-500/50 shadow-md ring-1 ring-primary-500/20'
-                                    : 'bg-transparent border-transparent hover:border-slate-700'
+                                className={`group p-4 rounded-xl cursor-pointer border transition-all hover:bg-surface-light text-left relative ${selectedNote?.id === note.id
+                                    ? 'bg-surface-light border-primary/50 shadow-md ring-1 ring-primary/20'
+                                    : 'bg-transparent border-transparent hover:border-border'
                                     }`}
                             >
                                 <div className="flex justify-between items-start mb-1">
-                                    <h3 className={`font-semibold text-sm truncate pr-6 ${!note.title ? 'text-slate-500 italic' : 'text-slate-200'}`}>
+                                    <h3 className={`font-semibold text-sm truncate pr-6 ${!note.title ? 'text-text-secondary italic' : 'text-text'}`}>
                                         {note.title || 'Untitled Note'}
                                     </h3>
                                     {note.is_pinned && <Pin size={12} className="text-amber-500 fill-current flex-shrink-0" />}
                                 </div>
-                                <p className="text-xs text-slate-500 line-clamp-2 h-8">
+                                <p className="text-xs text-text-secondary line-clamp-2 h-8">
                                     {note.content || 'No content...'}
                                 </p>
                                 <div className="flex justify-between items-center mt-3 pt-3 border-t border-slate-800/50">
@@ -199,17 +199,17 @@ const Notes = () => {
             </div>
 
             {/* Main Editor */}
-            <div className={`${!selectedNote ? 'hidden md:flex' : 'flex'} flex-1 flex-col bg-slate-950 h-full relative z-10`}>
+            <div className={`${!selectedNote ? 'hidden md:flex' : 'flex'} flex-1 flex-col bg-bg h-full relative z-10`}>
                 {selectedNote ? (
                     <>
-                        <div className="border-b border-slate-800 p-4 flex items-center justify-between bg-slate-950">
-                            <button onClick={() => setSelectedNote(null)} className="md:hidden p-2 -ml-2 text-slate-400 hover:text-white">
+                        <div className="border-b border-border p-4 flex items-center justify-between bg-bg">
+                            <button onClick={() => setSelectedNote(null)} className="md:hidden p-2 -ml-2 text-text-secondary hover:text-text">
                                 <ArrowLeft />
                             </button>
-                            <div className="text-xs text-slate-500 flex items-center gap-2">
+                            <div className="text-xs text-text-secondary flex items-center gap-2">
                                 {saving ? 'Saving...' : 'Saved'}
                             </div>
-                            <button onClick={(e) => handleDelete(e, selectedNote.id)} className="p-2 text-slate-500 hover:text-red-400 rounded-lg hover:bg-red-900/10 transition-colors">
+                            <button onClick={(e) => handleDelete(e, selectedNote.id)} className="p-2 text-text-secondary hover:text-red-500 rounded-lg hover:bg-red-50 transition-colors">
                                 <Trash2 size={18} />
                             </button>
                         </div>
@@ -220,24 +220,24 @@ const Notes = () => {
                                     value={title}
                                     onChange={handleTitleChange}
                                     placeholder="Note Title"
-                                    className="w-full text-3xl md:text-4xl font-bold text-white placeholder-slate-600 border-none focus:ring-0 p-0 mb-6 bg-transparent"
+                                    className="w-full text-3xl md:text-4xl font-bold text-text placeholder-text-secondary border-none focus:ring-0 p-0 mb-6 bg-transparent"
                                 />
                                 <textarea
                                     value={content}
                                     onChange={handleContentChange}
                                     placeholder="Start writing..."
-                                    className="w-full h-[calc(100vh-250px)] resize-none text-lg text-slate-300 placeholder-slate-600 border-none focus:ring-0 p-0 leading-relaxed bg-transparent"
+                                    className="w-full h-[calc(100vh-250px)] resize-none text-lg text-text placeholder-text-secondary border-none focus:ring-0 p-0 leading-relaxed bg-transparent"
                                 />
                             </div>
                         </div>
                     </>
                 ) : (
-                    <div className="flex-1 flex flex-col items-center justify-center text-slate-500 p-8 text-center bg-slate-950">
-                        <div className="w-24 h-24 bg-slate-900 rounded-full flex items-center justify-center mb-6 border border-slate-800">
-                            <FileText size={48} className="text-slate-600" />
+                    <div className="flex-1 flex flex-col items-center justify-center text-text-secondary p-8 text-center bg-bg">
+                        <div className="w-24 h-24 bg-surface rounded-full flex items-center justify-center mb-6 border border-border">
+                            <FileText size={48} className="text-text-secondary" />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-400 mb-2">Select a note to view</h3>
-                        <p className="max-w-xs mx-auto text-slate-600">Choose a note from the list on the left, or create a new one to get started.</p>
+                        <h3 className="text-xl font-bold text-text mb-2">Select a note to view</h3>
+                        <p className="max-w-xs mx-auto text-text-secondary">Choose a note from the list on the left, or create a new one to get started.</p>
                     </div>
                 )}
             </div>

@@ -20,7 +20,7 @@ const Sidebar = () => {
     };
 
     return (
-        <aside className="hidden lg:flex flex-col w-64 h-screen bg-slate-900 border-r border-slate-800 text-slate-300 fixed left-0 top-0 z-50">
+        <aside className="hidden lg:flex flex-col w-64 h-screen bg-surface border-r border-border text-text-secondary fixed left-0 top-0 z-50">
             {/* Logo Area */}
             {/* Logo Area */}
             <div className="p-6 flex items-center justify-center">
@@ -29,7 +29,7 @@ const Sidebar = () => {
 
             {/* Navigation */}
             <nav className="flex-1 px-4 py-4 space-y-2">
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 mb-2">
+                <div className="text-xs font-semibold text-text-secondary/70 uppercase tracking-wider px-4 mb-2">
                     Menu
                 </div>
                 {navItems.map((item) => (
@@ -38,8 +38,8 @@ const Sidebar = () => {
                         to={item.path}
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${isActive
-                                ? 'bg-primary-500/10 text-primary-400 font-medium shadow-[0_0_15px_rgba(20,184,166,0.1)]'
-                                : 'hover:bg-slate-800/50 hover:text-white'
+                                ? 'bg-primary/10 text-primary font-medium shadow-[0_0_15px_rgba(13,148,136,0.1)]'
+                                : 'hover:bg-surface-light hover:text-primary'
                             }`
                         }
                     >
@@ -50,26 +50,26 @@ const Sidebar = () => {
             </nav>
 
             {/* User Profile / Footer */}
-            <div className="p-4 border-t border-slate-800">
+            <div className="p-4 border-t border-border">
                 {user && (
-                    <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-800/30 border border-slate-800">
+                    <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-surface-light border border-border">
                         {user.avatar ? (
-                            <img src={user.avatar} alt={user.name} className="w-8 h-8 rounded-full border border-slate-600" />
+                            <img src={user.avatar} alt={user.name} className="w-8 h-8 rounded-full border border-border" />
                         ) : (
-                            <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-400">
+                            <div className="w-8 h-8 rounded-full bg-surface-light border border-border flex items-center justify-center text-text-secondary">
                                 <User className="w-4 h-4" />
                             </div>
                         )}
                         <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-white truncate">{user.name}</p>
-                            <p className="text-xs text-slate-500 truncate">Pro Account</p>
+                            <p className="text-sm font-medium text-text truncate">{user.name}</p>
+                            <p className="text-xs text-text-secondary/70 truncate">Pro Account</p>
                         </div>
                     </div>
                 )}
 
                 <button
                     onClick={handleLogout}
-                    className="w-full mt-3 flex items-center justify-center gap-2 px-4 py-2 text-sm text-slate-400 hover:text-red-400 hover:bg-slate-800/50 rounded-lg transition-colors"
+                    className="w-full mt-3 flex items-center justify-center gap-2 px-4 py-2 text-sm text-text-secondary hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
                 >
                     <LogOut className="w-4 h-4" />
                     <span>Sign Out</span>

@@ -81,7 +81,7 @@ const NotificationCenter = ({ habits, logsMap }) => {
             {/* Trigger Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="relative p-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-700 outline-none focus:ring-2 focus:ring-teal-500/20"
+                className="relative p-2.5 rounded-xl text-text-secondary hover:text-primary hover:bg-surface-light transition-colors border border-transparent hover:border-border outline-none focus:ring-2 focus:ring-primary/20"
                 aria-label="Notifications"
             >
                 <Bell className={`w-5 h-5 ${isOpen ? 'text-teal-400' : ''}`} />
@@ -97,13 +97,13 @@ const NotificationCenter = ({ habits, logsMap }) => {
 
             {/* Dropdown Panel */}
             {isOpen && (
-                <div className="absolute right-0 mt-3 w-80 sm:w-96 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-slate-700 shadow-2xl z-50 transform origin-top-right transition-all animate-fade-in divide-y divide-slate-800 overflow-hidden">
+                <div className="absolute right-0 mt-3 w-80 sm:w-96 rounded-2xl glass-panel shadow-2xl z-50 transform origin-top-right transition-all animate-fade-in divide-y divide-border overflow-hidden">
 
                     {/* Header */}
-                    <div className="px-5 py-4 flex items-center justify-between bg-slate-900">
+                    <div className="px-5 py-4 flex items-center justify-between bg-surface/80">
                         <div>
-                            <h3 className="font-semibold text-white">Notifications</h3>
-                            <p className="text-xs text-slate-500 mt-0.5">
+                            <h3 className="font-semibold text-text">Notifications</h3>
+                            <p className="text-xs text-text-secondary mt-0.5">
                                 {pendingCount > 0
                                     ? `You have ${pendingCount} pending tasks today`
                                     : "You're all caught up for today!"}
@@ -124,16 +124,16 @@ const NotificationCenter = ({ habits, logsMap }) => {
                                     Pending Tasks
                                 </h4>
                                 {pendingHabits.map(habit => (
-                                    <div key={habit.id} className="px-5 py-3 hover:bg-slate-800/50 transition-colors flex items-start gap-3 group cursor-default">
+                                    <div key={habit.id} className="px-5 py-3 hover:bg-surface-light transition-colors flex items-start gap-3 group cursor-default">
                                         <div
                                             className="mt-1 w-2 h-2 rounded-full flex-shrink-0"
                                             style={{ backgroundColor: habit.color, boxShadow: `0 0 8px ${habit.color}60` }}
                                         />
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">
+                                            <p className="text-sm font-medium text-text group-hover:text-primary transition-colors truncate">
                                                 {habit.name}
                                             </p>
-                                            <p className="text-xs text-slate-500 mt-0.5 flex items-center gap-1.5">
+                                            <p className="text-xs text-text-secondary mt-0.5 flex items-center gap-1.5">
                                                 <Clock className="w-3 h-3" />
                                                 <span>Due today</span>
                                             </p>
@@ -143,11 +143,11 @@ const NotificationCenter = ({ habits, logsMap }) => {
                             </div>
                         ) : (
                             <div className="px-5 py-12 text-center">
-                                <div className="w-16 h-16 rounded-full bg-slate-800/50 flex items-center justify-center mx-auto mb-4">
-                                    <Bell className="w-8 h-8 text-slate-600" />
+                                <div className="w-16 h-16 rounded-full bg-surface-light flex items-center justify-center mx-auto mb-4">
+                                    <Bell className="w-8 h-8 text-text-secondary" />
                                 </div>
-                                <h4 className="text-slate-300 font-medium mb-1">No pending tasks</h4>
-                                <p className="text-sm text-slate-500 max-w-[200px] mx-auto">
+                                <h4 className="text-text font-medium mb-1">No pending tasks</h4>
+                                <p className="text-sm text-text-secondary max-w-[200px] mx-auto">
                                     Great job! You've completed all your habits for today.
                                 </p>
                             </div>
