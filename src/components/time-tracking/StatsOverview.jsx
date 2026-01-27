@@ -42,9 +42,9 @@ const StatsOverview = ({ activities, date }) => {
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
-                <div className="bg-slate-900/90 backdrop-blur-md p-2 shadow-lg rounded-lg border border-slate-700 text-xs text-white">
+                <div className="bg-white/95 backdrop-blur-md p-2 shadow-lg rounded-lg border border-border text-xs text-text">
                     <p className="font-semibold mb-0.5">{payload[0].name}</p>
-                    <p className="text-slate-300">
+                    <p className="text-text-secondary">
                         {Math.floor(payload[0].value / 60)}h {Math.round(payload[0].value % 60)}m
                     </p>
                 </div>
@@ -56,32 +56,32 @@ const StatsOverview = ({ activities, date }) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
             {/* Total Time Card */}
-            <div className="glass-panel p-6 rounded-2xl relative overflow-hidden group hover:bg-slate-800/60 transition-all">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/10 rounded-full transform translate-x-10 -translate-y-10 group-hover:scale-110 transition-transform duration-500"></div>
-
+            <div className="p-2 relative overflow-hidden transition-all">
                 <div className="relative z-10">
-                    <div className="flex items-center gap-2 mb-2 text-slate-400 text-sm font-medium uppercase tracking-wider">
+                    <div className="flex items-center gap-2 mb-4 text-text-secondary text-xs font-semibold uppercase tracking-wider">
                         <Clock className="w-4 h-4" />
                         <span>Total Tracked</span>
                     </div>
-                    <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold text-white">{hours}</span>
-                        <span className="text-slate-500 font-medium">hrs</span>
-                        <span className="text-4xl font-bold text-white ml-2">{minutes}</span>
-                        <span className="text-slate-500 font-medium">mins</span>
+                    <div className="flex items-baseline gap-2 mb-6 justify-center">
+                        <span className="text-5xl font-bold text-text">{hours}</span>
+                        <span className="text-text-secondary font-medium">hrs</span>
+                        <span className="text-5xl font-bold text-text ml-4">{minutes}</span>
+                        <span className="text-text-secondary font-medium">mins</span>
                     </div>
-                    <div className="mt-4 flex items-center gap-2 text-sm text-primary-400 bg-primary-500/10 px-3 py-1 rounded-full w-fit border border-primary-500/20">
-                        <TrendingUp className="w-4 h-4" />
-                        <span className="font-medium">Productive Day</span>
+                    <div className="flex justify-center">
+                        <div className="flex items-center gap-2 text-sm text-primary-dark bg-primary/10 px-4 py-1.5 rounded-full border border-primary/20">
+                            <TrendingUp className="w-4 h-4" />
+                            <span className="font-medium">Productive Day</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             {/* Distribution Chart */}
             {chartData.length > 0 && (
-                <div className="glass-panel p-6 rounded-2xl flex flex-col justify-between">
-                    <h3 className="text-slate-300 font-semibold mb-4 flex items-center gap-2">
-                        <PieChart className="w-5 h-5 text-primary-500" />
+                <div className="bg-white border border-border p-6 rounded-2xl flex flex-col justify-between shadow-sm mt-4">
+                    <h3 className="text-text font-semibold mb-4 flex items-center gap-2">
+                        <PieChart className="w-5 h-5 text-primary" />
                         Activity Distribution
                     </h3>
                     <div className="h-48 relative">
@@ -106,7 +106,7 @@ const StatsOverview = ({ activities, date }) => {
                         </ResponsiveContainer>
                         {/* Center Text */}
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <span className="text-2xl font-bold text-slate-500 opacity-20">
+                            <span className="text-2xl font-bold text-text-secondary opacity-20">
                                 {Math.round((totalMinutes / 1440) * 100)}%
                             </span>
                         </div>
@@ -116,10 +116,10 @@ const StatsOverview = ({ activities, date }) => {
                         {chartData.slice(0, 3).map((item, index) => (
                             <div key={item.name} className="flex items-center justify-between text-sm group">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-2 h-2 rounded-full ring-2 ring-slate-700" style={{ backgroundColor: COLORS[index % COLORS.length] }}></div>
-                                    <span className="text-slate-400 truncate max-w-[120px]">{item.name}</span>
+                                    <div className="w-2 h-2 rounded-full ring-2 ring-white" style={{ backgroundColor: COLORS[index % COLORS.length] }}></div>
+                                    <span className="text-text-secondary truncate max-w-[120px]">{item.name}</span>
                                 </div>
-                                <span className="font-medium text-slate-200 bg-slate-800 px-2 py-0.5 rounded group-hover:bg-slate-700 transition-colors">
+                                <span className="font-medium text-text bg-surface-light px-2 py-0.5 rounded group-hover:bg-surface transition-colors">
                                     {Math.floor(item.value / 60)}h {Math.round(item.value % 60)}m
                                 </span>
                             </div>

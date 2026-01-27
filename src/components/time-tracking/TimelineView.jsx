@@ -43,12 +43,8 @@ const TimelineView = ({ activities, onEdit, onAdd, selectedDate }) => {
     return (
         <div className="bg-transparent flex flex-col h-full overflow-hidden relative">
             {/* Header */}
-            <div className="p-4 border-b border-slate-700/50 flex justify-between items-center bg-slate-900/50 backdrop-blur-sm sticky top-0 z-20">
-                <h3 className="font-semibold text-slate-300">Timeline</h3>
-                <div className="text-xs text-slate-500">
-                    1h = {SCALING_FACTOR}px
-                </div>
-            </div>
+            {/* Header Removed - Managed by Parent */}
+
 
             {/* Scrollable Area */}
             <div
@@ -60,10 +56,10 @@ const TimelineView = ({ activities, onEdit, onAdd, selectedDate }) => {
                     {HOURS.map(hour => (
                         <div
                             key={hour}
-                            className="absolute w-full border-t border-dashed border-slate-800 flex items-start group"
+                            className="absolute w-full border-t border-dashed border-border flex items-start group"
                             style={{ top: hour * SCALING_FACTOR, height: SCALING_FACTOR }}
                         >
-                            <span className="text-xs text-slate-600 w-12 text-right pr-3 -mt-2 bg-slate-900/80 group-hover:text-primary-400 transition-colors">
+                            <span className="text-xs text-text-secondary w-12 text-right pr-3 -mt-2 bg-white/80 group-hover:text-primary transition-colors">
                                 {hour.toString().padStart(2, '0')}:00
                             </span>
 
@@ -71,9 +67,9 @@ const TimelineView = ({ activities, onEdit, onAdd, selectedDate }) => {
                             <div className="flex-1 h-full relative group/slot">
                                 <button
                                     onClick={() => onAdd({ hour })}
-                                    className="absolute inset-0 w-full h-full opacity-0 group-hover/slot:opacity-100 bg-primary-500/10 flex items-center justify-center transition-all duration-200"
+                                    className="absolute inset-0 w-full h-full opacity-0 group-hover/slot:opacity-100 bg-primary/5 flex items-center justify-center transition-all duration-200"
                                 >
-                                    <Plus className="w-5 h-5 text-primary-400" />
+                                    <Plus className="w-5 h-5 text-primary" />
                                 </button>
                             </div>
                         </div>
@@ -114,17 +110,17 @@ const TimelineView = ({ activities, onEdit, onAdd, selectedDate }) => {
                             >
                                 <div className="flex justify-between items-start">
                                     <div className="flex-1 min-w-0">
-                                        <div className="font-semibold text-slate-200 text-xs sm:text-sm truncate drop-shadow-md">
+                                        <div className="font-semibold text-text text-xs sm:text-sm truncate drop-shadow-sm">
                                             {activity.name}
                                         </div>
                                         {height > 40 && (
-                                            <div className="text-[10px] sm:text-xs text-slate-300/80 truncate font-medium">
+                                            <div className="text-[10px] sm:text-xs text-text-secondary/80 truncate font-medium">
                                                 {new Date(activity.start_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} -
                                                 {new Date(activity.end_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                             </div>
                                         )}
                                         {height > 60 && activity.description && (
-                                            <p className="text-[10px] text-slate-400 line-clamp-2 mt-1">
+                                            <p className="text-[10px] text-text-secondary line-clamp-2 mt-1">
                                                 {activity.description}
                                             </p>
                                         )}
