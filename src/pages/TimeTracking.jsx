@@ -158,38 +158,40 @@ const TimeTracking = () => {
             <div className="max-w-7xl mx-auto space-y-6">
 
                 {/* Header Section */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-8">
                     <div>
-                        <button
-                            onClick={() => navigate('/dashboard')}
-                            className="flex items-center text-text-secondary hover:text-text transition-colors mb-2 text-sm font-medium"
-                        >
-                            <ArrowLeft className="w-4 h-4 mr-1" />
-                            Dashboard
-                        </button>
-                        <h1 className="text-2xl font-bold text-text">Time Tracking</h1>
-                        <p className="text-text-secondary text-sm">Manage your daily schedule and productivity</p>
+                        <div className="flex items-center gap-2 mb-1">
+                            <button
+                                onClick={() => navigate('/dashboard')}
+                                className="text-text-secondary hover:text-text transition-colors flex items-center gap-1 text-sm font-medium"
+                            >
+                                <ArrowLeft className="w-4 h-4" />
+                                Dashboard
+                            </button>
+                        </div>
+                        <h1 className="text-3xl font-bold text-text mb-1">Time Tracking</h1>
+                        <p className="text-text-secondary">Manage your daily schedule and productivity</p>
                     </div>
 
-                    <div className="flex items-center bg-surface-light rounded-xl shadow-sm border border-border p-1 backdrop-blur-sm">
+                    <div className="flex items-center bg-surface rounded-xl border border-border p-1 shadow-sm self-start">
                         <button
                             onClick={() => handleDateChange(-1)}
-                            className="p-2 hover:bg-surface rounded-lg text-text-secondary hover:text-text transition-colors"
+                            className="p-2 hover:bg-surface-light rounded-lg text-text-secondary hover:text-text transition-colors"
                         >
                             <ChevronLeft className="w-5 h-5" />
                         </button>
-                        <div className="flex items-center gap-2 px-4 py-1 border-x border-slate-700 mx-1">
-                            <CalendarIcon className="w-4 h-4 text-primary-400" />
+                        <div className="flex items-center gap-2 px-4 py-1 border-x border-border mx-1 min-w-[160px] justify-center">
+                            <CalendarIcon className="w-4 h-4 text-primary" />
                             <input
                                 type="date"
                                 value={selectedDate}
                                 onChange={(e) => setSelectedDate(e.target.value)}
-                                className="bg-transparent text-sm font-medium text-text focus:outline-none cursor-pointer [color-scheme:light]"
+                                className="bg-transparent text-sm font-semibold text-text focus:outline-none cursor-pointer text-center"
                             />
                         </div>
                         <button
                             onClick={() => handleDateChange(1)}
-                            className="p-2 hover:bg-surface rounded-lg text-text-secondary hover:text-text transition-colors"
+                            className="p-2 hover:bg-surface-light rounded-lg text-text-secondary hover:text-text transition-colors"
                         >
                             <ChevronRight className="w-5 h-5" />
                         </button>
@@ -200,7 +202,12 @@ const TimeTracking = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Left: Timeline */}
                     <div className="lg:col-span-2 space-y-4">
-                        <div className="glass-panel p-1 rounded-2xl h-[600px] flex flex-col">
+                        <div className="bg-white border border-border rounded-xl overflow-hidden shadow-sm h-[600px] flex flex-col">
+                            {/* Timeline Header - Dark stripe from screenshot */}
+                            <div className="h-10 bg-slate-500 flex items-center justify-between px-4 text-white/90 text-sm font-medium shrink-0">
+                                <span>Timeline</span>
+                                <span className="text-white/60 text-xs">1h = 60px</span>
+                            </div>
                             {loading ? (
                                 <div className="flex-1 flex items-center justify-center">
                                     <div className="loading-spinner"></div>
@@ -220,13 +227,17 @@ const TimeTracking = () => {
                     <div className="lg:col-span-1 space-y-6">
                         <button
                             onClick={() => handleAdd()}
-                            className="w-full bg-primary-600 hover:bg-primary-500 text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-primary-500/20 transition-all hover:scale-[1.02] flex items-center justify-center gap-2 group"
+                            className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
                         >
-                            <Plus className="w-5 h-5" />
+                            <Plus className="w-5 h-5" strokeWidth={3} />
                             Log Activity
                         </button>
 
-                        <StatsOverview activities={activities} date={selectedDate} />
+                        <div className="bg-white rounded-3xl p-6 border border-border shadow-sm relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-[100px] -mr-8 -mt-8 pointer-events-none" />
+
+                            <StatsOverview activities={activities} date={selectedDate} />
+                        </div>
                     </div>
                 </div>
             </div>
