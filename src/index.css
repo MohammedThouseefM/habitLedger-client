@@ -193,14 +193,24 @@ input:-webkit-autofill:active {
 }
 
 /* UI Components */
-.btn {
-  @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-200 active:scale-95 cursor-pointer;
-}
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-200 active:scale-95 cursor-pointer;
+  }
 
-.btn-primary {
-  @apply bg-primary text-white shadow-lg shadow-primary/30 hover:bg-primary-dark hover:shadow-primary/50;
-}
+  .btn-primary {
+    @apply text-white shadow-lg;
+    background-color: var(--color-primary);
+    --tw-shadow-color: rgba(13, 148, 136, 0.3);
+    transition: all 0.2s;
+  }
 
-.btn-ghost {
-  @apply text-text-secondary hover:bg-surface-light hover:text-text;
+  .btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    --tw-shadow-color: rgba(13, 148, 136, 0.5);
+  }
+
+  .btn-ghost {
+    @apply text-text-secondary hover:bg-surface-light hover:text-text;
+  }
 }
