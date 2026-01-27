@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Home, Clock, PlusCircle, Calendar, FileText, CheckSquare } from 'lucide-react';
+import { Home, Clock, Calendar, FileText, CheckSquare } from 'lucide-react';
 
 const BottomNav = () => {
     const navigate = useNavigate();
@@ -9,7 +9,6 @@ const BottomNav = () => {
     const navItems = [
         { id: 'home', icon: Home, label: 'Home', path: '/dashboard' },
         { id: 'time', icon: Clock, label: 'Time', path: '/time-tracking' },
-        { id: 'add', icon: PlusCircle, label: 'Add', isAction: true, action: '?action=add-habit' },
         { id: 'todo', icon: CheckSquare, label: 'To-Do', path: '/todo' },
         { id: 'events', icon: Calendar, label: 'Events', path: '/events' },
         { id: 'notes', icon: FileText, label: 'Notes', path: '/notes' },
@@ -46,19 +45,15 @@ const BottomNav = () => {
                     <button
                         key={item.id}
                         onClick={() => handleNavigation(item)}
-                        className={`flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-200 ${item.id === 'add'
-                            ? '-mt-8 bg-primary text-white shadow-lg shadow-primary/30 w-12 h-12 rounded-full transform active:scale-95 border-2 border-bg'
-                            : isActive(item)
-                                ? 'text-primary'
-                                : 'text-text-secondary hover:text-text'
+                        className={`flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-200 ${isActive(item)
+                            ? 'text-primary'
+                            : 'text-text-secondary hover:text-text'
                             }`}
                     >
-                        <item.icon className={item.id === 'add' ? 'w-6 h-6' : 'w-5 h-5'} />
-                        {item.id !== 'add' && (
-                            <span className="text-[10px] font-medium mt-1">
-                                {item.label}
-                            </span>
-                        )}
+                        <item.icon className="w-5 h-5" />
+                        <span className="text-[10px] font-medium mt-1">
+                            {item.label}
+                        </span>
                     </button>
                 ))}
             </div>
