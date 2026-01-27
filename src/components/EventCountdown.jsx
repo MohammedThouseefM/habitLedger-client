@@ -123,22 +123,22 @@ const EventCountdown = () => {
     return (
         <div className="glass-panel p-3 sm:p-4 rounded-2xl">
             <div className="flex items-center justify-between mb-3 sm:mb-4">
-                <h3 className="text-base sm:text-lg font-semibold text-slate-200 flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-primary-400" />
+                <h3 className="text-base sm:text-lg font-semibold text-text flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-primary" />
                     Event Countdown
                 </h3>
                 <button
                     onClick={() => setIsAdding(!isAdding)}
-                    className="p-1.5 sm:p-2 hover:bg-slate-700 rounded-lg transition-colors"
+                    className="p-1.5 sm:p-2 hover:bg-surface-light rounded-lg transition-colors"
                     title="Add event"
                 >
-                    {isAdding ? <X className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" /> : <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400" />}
+                    {isAdding ? <X className="w-4 h-4 sm:w-5 sm:h-5 text-text-secondary" /> : <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />}
                 </button>
             </div>
 
             {/* Add Event Form */}
             {isAdding && (
-                <div className="mb-4 p-3 border border-slate-700/50 rounded-xl bg-slate-800/50 space-y-3 animate-in fade-in slide-in-from-top-2">
+                <div className="mb-4 p-3 border border-border rounded-xl bg-surface-light space-y-3 animate-in fade-in slide-in-from-top-2">
                     <input
                         type="text"
                         placeholder="Event name (e.g., Ramzan starts)"
@@ -148,7 +148,7 @@ const EventCountdown = () => {
                     />
                     <div className="grid grid-cols-2 gap-2">
                         <div>
-                            <label className="block text-xs text-slate-400 mb-1">Start Tracking From</label>
+                            <label className="block text-xs text-text-secondary mb-1">Start Tracking From</label>
                             <input
                                 type="date"
                                 value={newEvent.startDate || new Date().toISOString().split('T')[0]}
@@ -157,7 +157,7 @@ const EventCountdown = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-xs text-slate-400 mb-1">Event Date</label>
+                            <label className="block text-xs text-text-secondary mb-1">Event Date</label>
                             <input
                                 type="date"
                                 value={newEvent.eventDate}
@@ -189,8 +189,8 @@ const EventCountdown = () => {
             {/* Events List */}
             <div className="space-y-3">
                 {events.length === 0 && !isAdding ? (
-                    <div className="text-center py-8 text-slate-500 text-sm">
-                        <Calendar className="w-12 h-12 mx-auto mb-2 text-slate-700" />
+                    <div className="text-center py-8 text-text-secondary text-sm">
+                        <Calendar className="w-12 h-12 mx-auto mb-2 text-text-secondary" />
                         <p>No upcoming events</p>
                         <p className="text-xs mt-1">Click + to add an event</p>
                     </div>
@@ -198,9 +198,9 @@ const EventCountdown = () => {
                     events.map((event) => (
                         <div
                             key={event.id}
-                            className={`p-3 rounded-xl border transition-all bg-slate-800/20 ${event.isPast ? 'border-slate-700' :
-                                    event.daysRemaining <= 7 ? 'border-red-500/30' :
-                                        event.daysRemaining <= 30 ? 'border-yellow-500/30' : 'border-green-500/30'
+                            className={`p-3 rounded-xl border transition-all bg-surface-light ${event.isPast ? 'border-border' :
+                                event.daysRemaining <= 7 ? 'border-red-200' :
+                                    event.daysRemaining <= 30 ? 'border-yellow-200' : 'border-green-200'
                                 }`}
                         >
                             {editingId === event.id ? (
@@ -223,16 +223,16 @@ const EventCountdown = () => {
                                 <>
                                     <div className="flex items-start justify-between gap-2">
                                         <div className="flex-1 min-w-0">
-                                            <h4 className="font-semibold text-slate-200 text-sm sm:text-base truncate">
+                                            <h4 className="font-semibold text-text text-sm sm:text-base truncate">
                                                 {event.title}
                                             </h4>
-                                            <p className="text-xs text-slate-500 mt-1">
+                                            <p className="text-xs text-text-secondary mt-1">
                                                 📅 {formatDate(event.eventDate)}
                                             </p>
                                         </div>
                                         <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <button onClick={() => handleEditEvent(event)} className="p-1 text-slate-500 hover:text-blue-400 transition-colors"><Edit2 className="w-3.5 h-3.5" /></button>
-                                            <button onClick={() => handleDeleteEvent(event.id)} className="p-1 text-slate-500 hover:text-red-400 transition-colors"><Trash2 className="w-3.5 h-3.5" /></button>
+                                            <button onClick={() => handleEditEvent(event)} className="p-1 text-text-secondary hover:text-blue-500 transition-colors"><Edit2 className="w-3.5 h-3.5" /></button>
+                                            <button onClick={() => handleDeleteEvent(event.id)} className="p-1 text-text-secondary hover:text-red-500 transition-colors"><Trash2 className="w-3.5 h-3.5" /></button>
                                         </div>
                                     </div>
 
@@ -240,16 +240,16 @@ const EventCountdown = () => {
                                         {/* Progress Bar */}
                                         <div className="space-y-1">
                                             <div className="flex items-center justify-between text-xs">
-                                                <span className="text-slate-500">Progress</span>
-                                                <span className={`font-semibold ${event.isPast ? 'text-slate-500' :
-                                                    event.completionPercentage >= 75 ? 'text-red-400' :
-                                                        event.completionPercentage >= 50 ? 'text-yellow-400' :
-                                                            'text-green-400'
+                                                <span className="text-text-secondary">Progress</span>
+                                                <span className={`font-semibold ${event.isPast ? 'text-text-secondary' :
+                                                    event.completionPercentage >= 75 ? 'text-red-500' :
+                                                        event.completionPercentage >= 50 ? 'text-yellow-500' :
+                                                            'text-green-500'
                                                     }`}>
                                                     {event.completionPercentage}%
                                                 </span>
                                             </div>
-                                            <div className="w-full bg-slate-700/50 rounded-full h-1.5">
+                                            <div className="w-full bg-surface rounded-full h-1.5 border border-border">
                                                 <div
                                                     className={`h-1.5 rounded-full transition-all duration-500 ${event.isPast ? 'bg-slate-600' :
                                                         event.completionPercentage >= 75 ? 'bg-red-500' :
@@ -263,15 +263,15 @@ const EventCountdown = () => {
 
                                         {/* Days Info Grid */}
                                         <div className="grid grid-cols-2 gap-2 text-center">
-                                            <div className={`p-2 rounded-lg bg-slate-800/50 border border-slate-700/50`}>
-                                                <div className="text-xs text-slate-400 flex items-center justify-center gap-1 mb-0.5">
+                                            <div className={`p-2 rounded-lg bg-surface border border-border`}>
+                                                <div className="text-xs text-text-secondary flex items-center justify-center gap-1 mb-0.5">
                                                     <Clock className="w-3 h-3" />
                                                     {event.isPast ? 'Passed' : 'Remaining'}
                                                 </div>
-                                                <div className={`text-lg sm:text-lg font-bold ${event.isPast ? 'text-slate-500' :
-                                                    event.daysRemaining <= 7 ? 'text-red-400' :
-                                                        event.daysRemaining <= 30 ? 'text-yellow-400' :
-                                                            'text-green-400'
+                                                <div className={`text-lg sm:text-lg font-bold ${event.isPast ? 'text-text-secondary' :
+                                                    event.daysRemaining <= 7 ? 'text-red-500' :
+                                                        event.daysRemaining <= 30 ? 'text-yellow-500' :
+                                                            'text-green-500'
                                                     }`}>
                                                     {event.isPast ?
                                                         `${Math.abs(event.daysRemaining)} days ago` :
@@ -280,12 +280,12 @@ const EventCountdown = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="p-2 rounded-lg bg-blue-900/10 border border-blue-500/10">
-                                                <div className="text-xs text-blue-400/80 flex items-center justify-center gap-1 mb-0.5">
+                                            <div className="p-2 rounded-lg bg-blue-50 border border-blue-200">
+                                                <div className="text-xs text-blue-600 flex items-center justify-center gap-1 mb-0.5">
                                                     <Calendar className="w-3 h-3" />
                                                     Tracking for
                                                 </div>
-                                                <div className="text-lg sm:text-lg font-bold text-blue-400">
+                                                <div className="text-lg sm:text-lg font-bold text-blue-600">
                                                     {event.daysElapsed < 0
                                                         ? `${Math.abs(event.daysElapsed)} days ago`
                                                         : `${event.daysElapsed} days`

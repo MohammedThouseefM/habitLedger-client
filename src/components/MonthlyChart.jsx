@@ -19,20 +19,20 @@ const MonthlyChart = ({ year, month, habits, logsMap }) => {
 
     return (
         <div className="glass-panel rounded-2xl p-4">
-            <h3 className="text-lg font-semibold text-slate-200 mb-4">Monthly Completion</h3>
+            <h3 className="text-lg font-semibold text-text mb-4">Monthly Completion</h3>
             <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={data}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
                     <XAxis
                         dataKey="day"
-                        tick={{ fontSize: 12, fill: '#94a3b8' }}
-                        stroke="#475569"
+                        tick={{ fontSize: 12, fill: '#64748b' }}
+                        stroke="#cbd5e1"
                         tickLine={false}
                         axisLine={false}
                     />
                     <YAxis
-                        tick={{ fontSize: 12, fill: '#94a3b8' }}
-                        stroke="#475569"
+                        tick={{ fontSize: 12, fill: '#64748b' }}
+                        stroke="#cbd5e1"
                         domain={[0, 100]}
                         ticks={[0, 25, 50, 75, 100]}
                         tickLine={false}
@@ -41,18 +41,18 @@ const MonthlyChart = ({ year, month, habits, logsMap }) => {
                     <Tooltip
                         formatter={(value) => [`${value}%`, 'Completion']}
                         contentStyle={{
-                            backgroundColor: '#0f172a',
-                            border: '1px solid #334155',
+                            backgroundColor: '#ffffff',
+                            border: '1px solid #e2e8f0',
                             borderRadius: '12px',
-                            color: '#f1f5f9',
+                            color: '#0f172a',
                             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                         }}
-                        itemStyle={{ color: '#f1f5f9' }}
-                        cursor={{ fill: '#334155', opacity: 0.3 }}
+                        itemStyle={{ color: '#0f172a' }}
+                        cursor={{ fill: '#f1f5f9', opacity: 0.8 }}
                     />
                     <Bar
                         dataKey="completion"
-                        fill="#14b8a6"
+                        fill="var(--color-primary)"
                         radius={[6, 6, 0, 0]}
                     />
                 </BarChart>

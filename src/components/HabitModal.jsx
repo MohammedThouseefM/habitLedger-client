@@ -82,13 +82,13 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="bg-slate-900/95 rounded-2xl shadow-2xl w-full max-w-lg flex flex-col max-h-[85vh] animate-in zoom-in-95 duration-200 border border-slate-700/50">
-                <div className="px-6 py-4 border-b border-slate-800 flex justify-between items-center bg-slate-900 shrink-0 first-letter:rounded-t-2xl">
-                    <h2 className="text-xl font-bold text-white">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="bg-surface rounded-2xl shadow-2xl w-full max-w-lg flex flex-col max-h-[85vh] animate-in zoom-in-95 duration-200 border border-border">
+                <div className="px-6 py-4 border-b border-border flex justify-between items-center bg-surface shrink-0 first-letter:rounded-t-2xl">
+                    <h2 className="text-xl font-bold text-text">
                         {mode === 'edit' ? 'Edit Habit' : 'New Habit'}
                     </h2>
-                    <button onClick={onClose} className="text-slate-400 hover:text-white hover:bg-slate-800 p-2 rounded-full transition-colors">
+                    <button onClick={onClose} className="text-text-secondary hover:text-text hover:bg-surface-light p-2 rounded-full transition-colors">
                         <X className="w-5 h-5" />
                     </button>
                 </div>
@@ -97,7 +97,7 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                     {/* Name & Color */}
                     <div className="space-y-3">
                         <div>
-                            <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Name & Color</label>
+                            <label className="text-xs font-bold text-text-secondary uppercase tracking-wider mb-2 block">Name & Color</label>
                             <div className="flex gap-3">
                                 <input
                                     type="text"
@@ -108,7 +108,7 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                                     autoFocus
                                     required
                                 />
-                                <div className="flex gap-1.5 items-center bg-slate-800/50 border border-slate-700/50 rounded-xl px-3 shadow-inner">
+                                <div className="flex gap-1.5 items-center bg-surface-light border border-border rounded-xl px-3 shadow-inner">
                                     {colors.slice(0, 5).map((color) => (
                                         <button
                                             type="button"
@@ -125,7 +125,7 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
 
                     {/* Type Selection */}
                     <div>
-                        <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Habit Type</label>
+                        <label className="text-xs font-bold text-text-secondary uppercase tracking-wider mb-2 block">Habit Type</label>
                         <div className="grid grid-cols-3 gap-3">
                             {[
                                 { id: 'boolean', label: 'Yes / No', icon: Check },
@@ -137,11 +137,11 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                                     type="button"
                                     onClick={() => handleInputChange('type', type.id)}
                                     className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all ${formData.type === type.id
-                                        ? 'border-primary-500 bg-primary-900/20 text-primary-400 ring-1 ring-primary-500/30'
-                                        : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:bg-slate-800 hover:border-slate-600'
+                                        ? 'border-primary bg-primary/20 text-primary-dark ring-1 ring-primary/30'
+                                        : 'border-border bg-surface-light text-text-secondary hover:bg-surface hover:border-text-secondary'
                                         }`}
                                 >
-                                    <type.icon className={`w-6 h-6 mb-2 ${formData.type === type.id ? 'text-primary-400' : 'text-slate-500'}`} />
+                                    <type.icon className={`w-6 h-6 mb-2 ${formData.type === type.id ? 'text-primary' : 'text-text-secondary'}`} />
                                     <span className="text-sm font-medium">{type.label}</span>
                                 </button>
                             ))}
@@ -152,7 +152,7 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                     {formData.type !== 'boolean' && (
                         <div className="grid grid-cols-2 gap-4 animate-in fade-in slide-in-from-top-2">
                             <div>
-                                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Target</label>
+                                <label className="text-xs font-bold text-text-secondary uppercase tracking-wider mb-2 block">Target</label>
                                 <input
                                     type="number"
                                     value={formData.target_value}
@@ -163,7 +163,7 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                                 />
                             </div>
                             <div>
-                                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Unit</label>
+                                <label className="text-xs font-bold text-text-secondary uppercase tracking-wider mb-2 block">Unit</label>
                                 <input
                                     type="text"
                                     value={formData.unit}
@@ -177,16 +177,16 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                     )}
 
                     {/* Reminder Time */}
-                    <div className={`p-4 rounded-xl space-y-3 border transition-all ${formData.enable_reminder ? 'bg-amber-900/10 border-amber-500/20' : 'bg-slate-800/30 border-slate-700/50'}`}>
+                    <div className={`p-4 rounded-xl space-y-3 border transition-all ${formData.enable_reminder ? 'bg-amber-50 border-amber-200' : 'bg-surface-light border-border'}`}>
                         <div className="flex items-center justify-between">
-                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-                                <Clock className={`w-4 h-4 ${formData.enable_reminder ? 'text-amber-500' : 'text-slate-400'}`} />
+                            <label className="text-xs font-bold text-text-secondary uppercase tracking-wider flex items-center gap-2">
+                                <Clock className={`w-4 h-4 ${formData.enable_reminder ? 'text-amber-500' : 'text-text-secondary'}`} />
                                 Daily Reminder
                             </label>
                             <button
                                 type="button"
                                 onClick={() => handleInputChange('enable_reminder', !formData.enable_reminder)}
-                                className={`relative w-11 h-6 transition-colors rounded-full focus:outline-none flex items-center ${formData.enable_reminder ? 'bg-primary-600' : 'bg-slate-700'}`}
+                                className={`relative w-11 h-6 transition-colors rounded-full focus:outline-none flex items-center ${formData.enable_reminder ? 'bg-primary' : 'bg-slate-300'}`}
                             >
                                 <span
                                     className={`inline-block w-4 h-4 transform transition-transform bg-white rounded-full shadow-sm ${formData.enable_reminder ? 'translate-x-6' : 'translate-x-1'}`}
@@ -200,10 +200,10 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                                     type="time"
                                     value={formData.reminder_time}
                                     onChange={(e) => handleInputChange('reminder_time', e.target.value)}
-                                    className="bg-slate-800 border border-slate-700 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-primary-500"
+                                    className="bg-white border border-border text-text rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
                                     required={formData.enable_reminder}
                                 />
-                                <span className="text-xs text-slate-400">
+                                <span className="text-xs text-text-secondary">
                                     Notification time
                                 </span>
                             </div>
@@ -211,12 +211,12 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                     </div>
 
                     {/* Frequency */}
-                    <div className="bg-slate-800/30 p-4 rounded-xl space-y-3 border border-slate-700/50">
-                        <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Frequency</label>
+                    <div className="bg-surface-light p-4 rounded-xl space-y-3 border border-border">
+                        <label className="text-xs font-bold text-text-secondary uppercase tracking-wider block">Frequency</label>
                         <div className="flex gap-6">
                             <label className="flex items-center gap-2 cursor-pointer group">
-                                <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${formData.frequency_type === 'daily' ? 'border-primary-500' : 'border-slate-500'}`}>
-                                    {formData.frequency_type === 'daily' && <div className="w-2 h-2 rounded-full bg-primary-500" />}
+                                <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${formData.frequency_type === 'daily' ? 'border-primary' : 'border-text-secondary'}`}>
+                                    {formData.frequency_type === 'daily' && <div className="w-2 h-2 rounded-full bg-primary" />}
                                 </div>
                                 <input
                                     type="radio"
@@ -224,11 +224,11 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                                     checked={formData.frequency_type === 'daily'}
                                     onChange={() => handleInputChange('frequency_type', 'daily')}
                                 />
-                                <span className="text-sm font-medium text-slate-300 group-hover:text-white">Every Day</span>
+                                <span className="text-sm font-medium text-text group-hover:text-primary">Every Day</span>
                             </label>
                             <label className="flex items-center gap-2 cursor-pointer group">
-                                <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${formData.frequency_type === 'specific_days' ? 'border-primary-500' : 'border-slate-500'}`}>
-                                    {formData.frequency_type === 'specific_days' && <div className="w-2 h-2 rounded-full bg-primary-500" />}
+                                <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${formData.frequency_type === 'specific_days' ? 'border-primary' : 'border-text-secondary'}`}>
+                                    {formData.frequency_type === 'specific_days' && <div className="w-2 h-2 rounded-full bg-primary" />}
                                 </div>
                                 <input
                                     type="radio"
@@ -236,7 +236,7 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                                     checked={formData.frequency_type === 'specific_days'}
                                     onChange={() => handleInputChange('frequency_type', 'specific_days')}
                                 />
-                                <span className="text-sm font-medium text-slate-300 group-hover:text-white">Specific Days</span>
+                                <span className="text-sm font-medium text-text group-hover:text-primary">Specific Days</span>
                             </label>
                         </div>
 
@@ -248,8 +248,8 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                                         key={day.id}
                                         onClick={() => toggleDay(day.id)}
                                         className={`w-9 h-9 rounded-full text-xs font-bold transition-all ${formData.frequency_days?.includes(day.id)
-                                            ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/20 scale-110'
-                                            : 'bg-slate-800 border border-slate-700 text-slate-500 hover:bg-slate-700/80 hover:text-white'
+                                            ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-110'
+                                            : 'bg-surface border border-border text-text-secondary hover:bg-surface-light hover:text-text'
                                             }`}
                                     >
                                         {day.label}
@@ -260,17 +260,17 @@ const HabitModal = ({ isOpen, onClose, onSave, initialData, mode = 'create' }) =
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="pt-4 flex justify-end gap-3 border-t border-slate-800 mt-6">
+                    <div className="pt-4 flex justify-end gap-3 border-t border-border mt-6">
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-5 py-2.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl text-sm font-medium transition-colors"
+                            className="px-5 py-2.5 text-text-secondary hover:text-text hover:bg-surface-light rounded-xl text-sm font-medium transition-colors"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
-                            className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white rounded-xl font-semibold shadow-lg shadow-primary-500/20 transition-all hover:scale-[1.02] active:scale-95"
+                            className="px-6 py-2.5 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white rounded-xl font-semibold shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95"
                         >
                             {mode === 'edit' ? 'Save Changes' : 'Create Habit'}
                         </button>

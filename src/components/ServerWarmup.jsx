@@ -66,50 +66,50 @@ const ServerWarmup = ({ children }) => {
     };
 
     return (
-        <div className="fixed inset-0 bg-slate-950 flex flex-col items-center justify-center z-[100] text-slate-100 p-4">
+        <div className="fixed inset-0 bg-bg flex flex-col items-center justify-center z-[100] text-text p-4">
             {/* Background effects */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[20%] left-[20%] w-[40%] h-[40%] bg-teal-500/10 rounded-full blur-[100px] animate-pulse-subtle" />
-                <div className="absolute bottom-[20%] right-[20%] w-[40%] h-[40%] bg-violet-600/10 rounded-full blur-[100px] animate-pulse-subtle" style={{ animationDelay: '2s' }} />
+                <div className="absolute top-[20%] left-[20%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[100px] animate-pulse-subtle" />
+                <div className="absolute bottom-[20%] right-[20%] w-[40%] h-[40%] bg-accent/10 rounded-full blur-[100px] animate-pulse-subtle" style={{ animationDelay: '2s' }} />
             </div>
 
-            <div className="relative max-w-md w-full bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl items-center flex flex-col user-select-none">
+            <div className="relative max-w-md w-full glass-panel rounded-3xl p-8 shadow-2xl items-center flex flex-col user-select-none">
 
                 {/* Icon Animation */}
                 <div className="relative mb-8">
                     {status === 'ready' ? (
-                        <div className="w-20 h-20 bg-teal-500/20 rounded-full flex items-center justify-center animate-bounce-subtle">
-                            <CheckCircle2 className="w-10 h-10 text-teal-400" />
+                        <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center animate-bounce-subtle">
+                            <CheckCircle2 className="w-10 h-10 text-primary" />
                         </div>
                     ) : (
                         <>
-                            <div className="absolute inset-0 bg-teal-500/20 rounded-full animate-ping opacity-75" />
-                            <div className="w-20 h-20 bg-slate-800 rounded-full flex items-center justify-center relative z-10 border border-slate-700">
-                                <Server className="w-8 h-8 text-teal-400 animate-pulse" />
+                            <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping opacity-75" />
+                            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center relative z-10 border border-border">
+                                <Server className="w-8 h-8 text-primary animate-pulse" />
                             </div>
                         </>
                     )}
                 </div>
 
-                <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-violet-400">
+                <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
                     {status === 'ready' ? 'System Ready' : 'Server Warmup'}
                 </h2>
 
-                <p className="text-slate-400 text-center mb-6 min-h-[48px] transition-all duration-300">
+                <p className="text-text-secondary text-center mb-6 min-h-[48px] transition-all duration-300">
                     {getMessage()}
                 </p>
 
                 {/* Progress Indicators */}
                 {status !== 'ready' && (
                     <div className="w-full space-y-4">
-                        <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                        <div className="h-1.5 w-full bg-surface-light border border-border rounded-full overflow-hidden">
                             <div
-                                className="h-full bg-gradient-to-r from-teal-500 to-violet-500 rounded-full transition-all duration-1000 ease-linear"
+                                className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-linear"
                                 style={{ width: `${Math.min((elapsedTime / 60) * 100, 95)}%` }}
                             />
                         </div>
 
-                        <div className="flex justify-between text-xs text-slate-500 font-mono">
+                        <div className="flex justify-between text-xs text-text-secondary font-mono">
                             <span>Attempts: {retryCount}</span>
                             <span>{elapsedTime}s</span>
                         </div>
@@ -118,11 +118,11 @@ const ServerWarmup = ({ children }) => {
 
                 {/* Long wait helper */}
                 {elapsedTime > 20 && status !== 'ready' && (
-                    <div className="mt-8 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20 flex gap-3 text-left">
-                        <AlertCircle className="w-5 h-5 text-yellow-500 flex-shrink-0" />
+                    <div className="mt-8 p-3 rounded-lg bg-yellow-50 border border-yellow-200 flex gap-3 text-left">
+                        <AlertCircle className="w-5 h-5 text-yellow-600 flex-shrink-0" />
                         <div className="space-y-1">
-                            <p className="text-xs text-yellow-200 font-medium">Why is this happening?</p>
-                            <p className="text-[11px] text-yellow-500/80 leading-relaxed">
+                            <p className="text-xs text-yellow-800 font-medium">Why is this happening?</p>
+                            <p className="text-[11px] text-yellow-700/80 leading-relaxed">
                                 Our backend is hosted on a free instance that "sleeps" after inactivity. It needs a moment to wake up.
                             </p>
                         </div>

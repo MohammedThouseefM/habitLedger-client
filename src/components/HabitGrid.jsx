@@ -85,10 +85,10 @@ const HabitGrid = ({ year, month, habits, logsMap, onToggle, onHabitClick, onEdi
                                 </div>
 
                                 {/* Edit/Delete Actions (Visible on Hover) */}
-                                <div className="flex items-center gap-1 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity absolute right-2 bg-slate-800 pl-2 rounded-l-lg shadow-md z-20">
+                                <div className="flex items-center gap-1 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity absolute right-2 bg-surface pl-2 rounded-l-lg shadow-md z-20 border border-border">
                                     <button
                                         onClick={(e) => { e.stopPropagation(); onEdit(habit); }}
-                                        className="p-1.5 text-slate-400 hover:text-primary-400 hover:bg-slate-700 rounded-md transition-colors"
+                                        className="p-1.5 text-text-secondary hover:text-primary hover:bg-surface-light rounded-md transition-colors"
                                     >
                                         <Settings className="w-3.5 h-3.5" />
                                     </button>
@@ -97,7 +97,7 @@ const HabitGrid = ({ year, month, habits, logsMap, onToggle, onHabitClick, onEdi
                                             e.stopPropagation();
                                             if (confirm(`Delete "${habit.name}"?`)) onDelete(habit.id);
                                         }}
-                                        className="p-1.5 text-slate-400 hover:text-red-400 hover:bg-red-900/20 rounded-md transition-colors"
+                                        className="p-1.5 text-text-secondary hover:text-red-500 hover:bg-red-50 rounded-md transition-colors"
                                     >
                                         <Trash2 className="w-3.5 h-3.5" />
                                     </button>
@@ -126,7 +126,7 @@ const HabitGrid = ({ year, month, habits, logsMap, onToggle, onHabitClick, onEdi
                                     <div
                                         key={day.toString()}
                                         ref={isToday ? todayRef : null}
-                                        className={`text-center flex-shrink-0 rounded-xl transition-all ${isToday ? 'bg-primary-600/20 shadow-[0_0_15px_rgba(20,184,166,0.2)] border border-primary-500/30' : 'hover:bg-slate-800/30'
+                                        className={`text-center flex-shrink-0 rounded-xl transition-all ${isToday ? 'bg-primary/20 shadow-[0_0_15px_rgba(13,148,136,0.2)] border border-primary/30' : 'hover:bg-surface-light'
                                             }`}
                                         style={{ width: '40px', padding: '6px 0' }}
                                     >
