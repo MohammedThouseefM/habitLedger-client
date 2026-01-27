@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import TimeTracking from './pages/TimeTracking';
 import Notes from './pages/Notes';
 import Events from './pages/Events';
+import TodoList from './pages/TodoList';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import NotFound from './pages/NotFound';
@@ -62,6 +63,16 @@ function App() {
                                     <ProtectedRoute>
                                         <Layout>
                                             <Events />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/todo"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <TodoList />
                                         </Layout>
                                     </ProtectedRoute>
                                 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Home, Clock, FileText, Settings, LogOut, User, Calendar } from 'lucide-react';
+import { Home, Clock, FileText, Settings, LogOut, User, Calendar, CheckSquare } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const Sidebar = () => {
@@ -10,6 +10,7 @@ const Sidebar = () => {
     const navItems = [
         { icon: Home, label: 'Dashboard', path: '/dashboard' },
         { icon: Clock, label: 'Time Tracking', path: '/time-tracking' },
+        { icon: CheckSquare, label: 'To-Do List', path: '/todo' },
         { icon: Calendar, label: 'Events', path: '/events' },
         { icon: FileText, label: 'Notes', path: '/notes' },
     ];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Home, Clock, PlusCircle, Calendar, FileText } from 'lucide-react';
+import { Home, Clock, PlusCircle, Calendar, FileText, CheckSquare } from 'lucide-react';
 
 const BottomNav = () => {
     const navigate = useNavigate();
@@ -10,6 +10,7 @@ const BottomNav = () => {
         { id: 'home', icon: Home, label: 'Home', path: '/dashboard' },
         { id: 'time', icon: Clock, label: 'Time', path: '/time-tracking' },
         { id: 'add', icon: PlusCircle, label: 'Add', isAction: true, action: '?action=add-habit' },
+        { id: 'todo', icon: CheckSquare, label: 'To-Do', path: '/todo' },
         { id: 'events', icon: Calendar, label: 'Events', path: '/events' },
         { id: 'notes', icon: FileText, label: 'Notes', path: '/notes' },
     ];
