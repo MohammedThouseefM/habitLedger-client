@@ -22,28 +22,28 @@ const MonthSelector = ({ year, month, onPrevious, onNext, compact = false }) => 
     }
 
     return (
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
             <button
                 onClick={onPrevious}
-                className="p-1.5 hover:bg-surface-light rounded-lg transition-colors text-text-secondary hover:text-primary"
+                className="p-1 md:p-1.5 hover:bg-surface-light rounded-lg transition-colors text-text-secondary hover:text-primary"
                 aria-label="Previous month"
             >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
             </button>
 
-            <div className="text-center min-w-[120px]">
-                <h2 className="text-xl font-bold text-text tracking-wide">
+            <div className="text-center min-w-[90px] md:min-w-[120px]">
+                <h2 className="text-sm md:text-xl font-bold text-text tracking-wide">
                     {monthName}
                 </h2>
-                <p className="text-text-secondary text-xs font-medium uppercase tracking-wider">{year}</p>
+                <p className="text-text-secondary text-[10px] md:text-xs font-medium uppercase tracking-wider">{year}</p>
             </div>
 
             <button
                 onClick={onNext}
-                className="p-1.5 hover:bg-surface-light rounded-lg transition-colors text-text-secondary hover:text-primary"
+                className="p-1 md:p-1.5 hover:bg-surface-light rounded-lg transition-colors text-text-secondary hover:text-primary"
                 aria-label="Next month"
             >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
             </button>
         </div>
     );

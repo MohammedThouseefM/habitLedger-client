@@ -251,7 +251,6 @@ const Dashboard = () => {
                         >
                             <Plus className="w-5 h-5" />
                             <span className="hidden sm:inline">New Habit</span>
-                            <span className="sm:hidden">New</span>
                         </button>
                     </div>
                 </div>
