@@ -96,8 +96,8 @@ const PerformanceMetrics = ({ habits, logsMap, year, month }) => {
     return (
         <div className="space-y-3 sm:space-y-4">
             {/* Overall Stats */}
-            <div className="glass-panel p-3 sm:p-4 rounded-2xl">
-                <h3 className="text-base sm:text-lg font-semibold text-text mb-3 sm:mb-4">Performance</h3>
+            <div className="glass-panel p-4 rounded-2xl">
+                <h3 className="text-base sm:text-lg font-semibold text-text mb-4">Performance</h3>
 
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                     {/* Completion Rate */}
@@ -121,8 +121,8 @@ const PerformanceMetrics = ({ habits, logsMap, year, month }) => {
             </div>
 
             {/* Per-Habit Stats */}
-            <div className="glass-panel p-3 sm:p-4 rounded-2xl">
-                <h3 className="text-base sm:text-lg font-semibold text-text mb-3 sm:mb-4">Habit Streaks</h3>
+            <div className="glass-panel p-4 rounded-2xl">
+                <h3 className="text-base sm:text-lg font-semibold text-text mb-4">Habit Streaks</h3>
 
                 <div className="space-y-4">
                     {habitStats.map(habit => (

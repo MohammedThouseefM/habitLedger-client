@@ -217,38 +217,43 @@ const Dashboard = () => {
     return (
         <div className="h-full flex flex-col space-y-6">
             {/* Dashboard Header */}
-            <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
-                <div>
-                    <h1 className="text-3xl font-bold text-text tracking-tight leading-tight">
-                        Good {new Date().getHours() < 12 ? 'Morning' : new Date().getHours() < 18 ? 'Afternoon' : 'Evening'}, {user?.name?.split(' ')[0] || 'User'}
-                    </h1>
-                    <p className="text-text-secondary mt-1">Ready to crush your goals today?</p>
-                </div>
-
-                <div className="flex items-center gap-4 flex-wrap">
-                    <div className="hidden sm:block">
-                        <SyncStatusIndicator />
+            <div className="flex flex-col gap-6">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <h1 className="text-2xl md:text-3xl font-bold text-text tracking-tight leading-tight">
+                            Good {new Date().getHours() < 12 ? 'Morning' : new Date().getHours() < 18 ? 'Afternoon' : 'Evening'}, <br className="hidden md:block" />
+                            <span className="text-primary">{user?.name?.split(' ')[0] || 'User'}</span>
+                        </h1>
+                        <p className="text-text-secondary mt-1 text-sm md:text-base">Ready to crush your goals today?</p>
                     </div>
 
-                    <div className="glass-panel p-1 rounded-xl flex items-center">
-                        <MonthSelector
-                            year={year}
-                            month={month}
-                            onPrevious={handlePreviousMonth}
-                            onNext={handleNextMonth}
-                            compact={false}
-                        />
+                    <div className="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+                        {/* Sync Indicator - Desktop */}
+                        <div className="hidden sm:block">
+                            <SyncStatusIndicator />
+                        </div>
+
+                        <div className="glass-panel p-1 rounded-xl flex items-center shadow-sm">
+                            <MonthSelector
+                                year={year}
+                                month={month}
+                                onPrevious={handlePreviousMonth}
+                                onNext={handleNextMonth}
+                                compact={false}
+                            />
+                        </div>
+
+                        <NotificationCenter habits={habits} logsMap={logsMap} />
+
+                        <button
+                            onClick={openCreateModal}
+                            className="btn btn-primary whitespace-nowrap shadow-lg shadow-primary/20"
+                        >
+                            <Plus className="w-5 h-5" />
+                            <span className="hidden sm:inline">New Habit</span>
+                            <span className="sm:hidden">New</span>
+                        </button>
                     </div>
-
-                    <NotificationCenter habits={habits} logsMap={logsMap} />
-
-                    <button
-                        onClick={openCreateModal}
-                        className="btn btn-primary"
-                    >
-                        <Plus className="w-5 h-5" />
-                        <span>New Habit</span>
-                    </button>
                 </div>
             </div>
 
