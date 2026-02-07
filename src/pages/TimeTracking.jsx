@@ -251,7 +251,7 @@ const TimeTracking = () => {
             {/* Premium Modal Form */}
             {showForm && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-                    <div className="bg-slate-900/95 rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-200 border border-slate-700/50">
+                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-200 border border-slate-200">
                         {/* Modal Header */}
                         <div className="px-6 py-4 border-b border-border flex justify-between items-center bg-surface">
                             <div>
@@ -287,7 +287,7 @@ const TimeTracking = () => {
                                             autoFocus
                                         />
                                     </div>
-                                    <div className="flex items-center gap-1.5 p-1.5 bg-slate-800 rounded-lg border border-slate-700">
+                                    <div className="flex items-center gap-1.5 p-1.5 bg-slate-100 rounded-lg border border-slate-200">
                                         {['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'].map((color) => (
                                             <button
                                                 key={color}
@@ -314,7 +314,7 @@ const TimeTracking = () => {
                                             type="date"
                                             value={selectedDate}
                                             onChange={(e) => setSelectedDate(e.target.value)}
-                                            className="input-premium w-full pl-9 font-medium [color-scheme:dark]"
+                                            className="input-premium w-full pl-9 font-medium"
                                             required
                                         />
                                     </div>
@@ -326,7 +326,7 @@ const TimeTracking = () => {
                                         name="start_time"
                                         value={formData.start_time}
                                         onChange={handleInputChange}
-                                        className="bg-slate-800 text-white border border-slate-700 rounded-xl px-3 py-2 w-full font-mono text-center focus:outline-none focus:border-primary-500 [color-scheme:dark]"
+                                        className="bg-white text-text border border-slate-200 rounded-xl px-3 py-2 w-full font-mono text-center focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                                         required
                                     />
                                 </div>
@@ -337,7 +337,7 @@ const TimeTracking = () => {
                                         name="end_time"
                                         value={formData.end_time}
                                         onChange={handleInputChange}
-                                        className="bg-slate-800 text-white border border-slate-700 rounded-xl px-3 py-2 w-full font-mono text-center focus:outline-none focus:border-primary-500 [color-scheme:dark]"
+                                        className="bg-white text-text border border-slate-200 rounded-xl px-3 py-2 w-full font-mono text-center focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                                         required
                                     />
                                 </div>
@@ -356,12 +356,12 @@ const TimeTracking = () => {
                             </div>
 
                             {/* Actions */}
-                            <div className="pt-4 flex items-center justify-end gap-3 border-t border-slate-800">
+                            <div className="pt-4 flex items-center justify-end gap-3 border-t border-slate-200">
                                 {editingId && (
                                     <button
                                         type="button"
                                         onClick={handleDelete}
-                                        className="mr-auto text-red-400 hover:text-red-300 hover:bg-red-900/20 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+                                        className="mr-auto text-red-500 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
                                     >
                                         Delete Activity
                                     </button>
@@ -369,7 +369,7 @@ const TimeTracking = () => {
                                 <button
                                     type="button"
                                     onClick={() => setShowForm(false)}
-                                    className="px-5 py-2.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl text-sm font-medium transition-colors"
+                                    className="px-5 py-2.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-xl text-sm font-medium transition-colors"
                                 >
                                     Cancel
                                 </button>
