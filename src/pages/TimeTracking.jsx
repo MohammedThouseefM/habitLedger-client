@@ -78,8 +78,14 @@ const TimeTracking = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const startDateTime = `${selectedDate}T${formData.start_time}:00`;
-            const endDateTime = `${selectedDate}T${formData.end_time}:00`;
+            // Create Date objects from local parts and convert to UTC ISO string
+            const [year, month, day] = selectedDate.split('-').map(Number);
+            const [startHour, startMinute] = formData.start_time.split(':').map(Number);
+            const [endHour, endMinute] = formData.end_time.split(':').map(Number);
+
+            // Month is 0-indexed in JS Date constructor
+            const startDateTime = new Date(year, month - 1, day, startHour, startMinute).toISOString();
+            const endDateTime = new Date(year, month - 1, day, endHour, endMinute).toISOString();
 
             const payload = {
                 name: formData.name,
