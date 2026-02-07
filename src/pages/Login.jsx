@@ -142,14 +142,14 @@ const Login = () => {
                                 {!isLogin && (
                                     <div className="space-y-1.5 align-left text-left">
                                         <label className="text-xs font-medium text-text-secondary ml-1">Full Name</label>
-                                        <div className="relative group">
-                                            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary group-focus-within:text-primary transition-colors" />
+                                        <div className="relative group input-premium flex items-center gap-3">
+                                            <User className="w-5 h-5 text-text-secondary group-focus-within:text-primary transition-colors flex-shrink-0" />
                                             <input
                                                 type="text"
                                                 required={!isLogin}
                                                 value={formData.name}
                                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                                className="input-premium pl-10"
+                                                className="bg-transparent border-none outline-none w-full p-0 text-text placeholder:text-slate-400 h-full"
                                                 placeholder="John Doe"
                                             />
                                         </div>
@@ -158,14 +158,14 @@ const Login = () => {
 
                                 <div className="space-y-1.5 align-left text-left">
                                     <label className="text-xs font-medium text-text-secondary ml-1">Email Address</label>
-                                    <div className="relative group">
-                                        <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary group-focus-within:text-primary transition-colors" />
+                                    <div className="relative group input-premium flex items-center gap-3">
+                                        <AtSign className="w-5 h-5 text-text-secondary group-focus-within:text-primary transition-colors flex-shrink-0" />
                                         <input
                                             type="email"
                                             required
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="input-premium pl-10"
+                                            className="bg-transparent border-none outline-none w-full p-0 text-text placeholder:text-slate-400 h-full"
                                             placeholder="Email address"
                                         />
                                     </div>
@@ -173,14 +173,14 @@ const Login = () => {
 
                                 <div className="space-y-1.5 align-left text-left">
                                     <label className="text-xs font-medium text-text-secondary ml-1">Password</label>
-                                    <div className="relative group">
-                                        <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary group-focus-within:text-primary transition-colors" />
+                                    <div className="relative group input-premium flex items-center gap-3">
+                                        <Lock className="w-5 h-5 text-text-secondary group-focus-within:text-primary transition-colors flex-shrink-0" />
                                         <input
                                             type="password"
                                             required
                                             value={formData.password}
                                             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                                            className="input-premium pl-10"
+                                            className="bg-transparent border-none outline-none w-full p-0 text-text placeholder:text-slate-400 h-full"
                                             placeholder="Password"
                                             minLength={6}
                                         />

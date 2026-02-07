@@ -182,7 +182,8 @@ body {
   transition: all 0.2s;
 }
 
-.input-premium:focus {
+.input-premium:focus,
+.input-premium:focus-within {
   background: #ffffff;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
