@@ -6,6 +6,7 @@ import {
     TrendingUp,
     Shield,
     Mail,
+    AtSign,
     Lock,
     User,
     ArrowRight,
@@ -158,14 +159,14 @@ const Login = () => {
                                 <div className="space-y-1.5 align-left text-left">
                                     <label className="text-xs font-medium text-text-secondary ml-1">Email Address</label>
                                     <div className="relative group">
-                                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary group-focus-within:text-primary transition-colors" />
+                                        <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary group-focus-within:text-primary transition-colors" />
                                         <input
                                             type="email"
                                             required
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                             className="input-premium pl-10"
-                                            placeholder="name@example.com"
+                                            placeholder="Email address"
                                         />
                                     </div>
                                 </div>
@@ -180,7 +181,7 @@ const Login = () => {
                                             value={formData.password}
                                             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                             className="input-premium pl-10"
-                                            placeholder="••••••••"
+                                            placeholder="Password"
                                             minLength={6}
                                         />
                                     </div>
